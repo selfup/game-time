@@ -17,7 +17,7 @@ Box.prototype.draw = function () {
   return this
 }
 
-Box.prototype.move = function () {
+Box.prototype.moveRight = function () {
   this.x++
   return this
 }
@@ -48,7 +48,7 @@ var move = () => {
     requestAnimationFrame( function gameLoop() {
       context.clearRect(0, 0, canvas.width, canvas.height)
       animation.boxes.forEach(function (box){
-      box.draw().move()
+      box.draw().moveRight()
     })
   requestAnimationFrame(gameLoop)
   })
