@@ -1,4 +1,7 @@
 'use strict'
+$(document).ready( () => {
+  keyboardMoves();
+})
 
 let canvas = document.getElementById('game')
 let context = canvas.getContext('2d')
@@ -38,11 +41,32 @@ var animation = {
   }
 }
 
-$('body').on('keyup', () => {
-  if (event.which === 39) {
-    move()
-  }
-})
+// $('body').on('keyup', () => {
+//   if (event.which === 39) {
+//     move()
+//   }
+// })
+
+function keyboardMoves () {
+  $('body').on('keyup', function(event) {
+    switch(event.which) {
+        case 37: // left
+        break;
+
+        case 38: // up
+        break;
+
+        case 39:
+        move();
+
+        case 40: // down
+        break;
+
+        default: return; // exit this handler for other keys
+    }
+    event.preventDefault(); // prevent the default action (scroll / move caret)
+  })
+};
 
 var move = () => {
     requestAnimationFrame( function gameLoop() {
