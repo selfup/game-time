@@ -4,10 +4,8 @@ body {
 }
 
 canvas {
-  width: 800px;
-  height: 600px;
   background: url('../images/grid.jpg');
-  text: center;
+ /* text: center;*/
   border-style: solid;
   border-color: teal;
   border-width: large;

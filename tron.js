@@ -3,6 +3,7 @@
 let canvas = document.getElementById('game')
 let context = canvas.getContext('2d')
 
+
 var Box = function(x, y) {
   this.x = x
   this.y = y
@@ -12,16 +13,17 @@ var Box = function(x, y) {
 
 Box.prototype.draw = function () {
   context.fillRect(this.x, this.y, this.width, this.height)
+  context.fillStyle = "#FF0000"
   return this
 }
 
 Box.prototype.move = function () {
-  this.y++
+  this.y
   return this
 }
 
 var animation = {
-  boxes: [new Box(50, 50), new Box(100, 50), new Box(150, 50), new Box(200, 50)],
+  boxes: [new Box(50, 50)],
   draw: function () {
     this.boxes.forEach(function (box) {
       return box.draw
