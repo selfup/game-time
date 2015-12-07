@@ -38,7 +38,13 @@ var animation = {
   }
 }
 
-$('body').on('keydown', () => {
+// $('body').on('keydown', () => {
+//   if (event.which === 39) {
+//     move()
+//   }
+// })
+
+$('body').on('keyup', () => {
   if (event.which === 39) {
     move()
   }
