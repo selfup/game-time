@@ -18,7 +18,7 @@ Box.prototype.draw = function () {
 }
 
 Box.prototype.move = function () {
-  this.y
+  this.x++
   return this
 }
 
@@ -30,18 +30,26 @@ var animation = {
     })
     return this
   },
-  move: function () {
+  moveRight: function () {
     this.boxes.forEach( function (box) {
-      return box.move
+      return box.moveRight
     })
     return this
   }
 }
 
-requestAnimationFrame( function gameLoop() {
-    context.clearRect(0, 0, canvas.width, canvas.height)
-    animation.boxes.forEach(function (box){
+$('body').on('keydown', () => {
+  if (event.which === 39) {
+    move()
+  }
+})
+
+var move = () => {
+    requestAnimationFrame( function gameLoop() {
+      context.clearRect(0, 0, canvas.width, canvas.height)
+      animation.boxes.forEach(function (box){
       box.draw().move()
     })
-    requestAnimationFrame(gameLoop)
-})
+  requestAnimationFrame(gameLoop)
+  })
+}
