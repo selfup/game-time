@@ -1,6 +1,6 @@
 'use strict'
 $(document).ready( () => {
-  keyboardMoves();
+  keyboardMoves()
   startLeftPlayer()
   resetGame()
 })
@@ -13,31 +13,33 @@ var Box = function(x, y) {
   this.y = y
   this.width = 20
   this.height = 20
-};
+  this.position = 1
+}
 
 Box.prototype.draw = function () {
-  context.fillRect(this.x, this.y, this.width, this.height)
   context.fillStyle = "#FF0000"
+  context.shadowColor = "#FF0000"
+  context.fillRect(this.x, this.y, this.width, this.height)
   return this
 }
 
 Box.prototype.moveRight = function () {
-  this.x += 5
+  this.x += this.position
   return this
 }
 
 Box.prototype.moveDown = function () {
-  this.y += 5
+  this.y += this.position
   return this
 }
 
 Box.prototype.moveUp = function () {
-  this.y -= 5
+  this.y -= this.position
   return this
 }
 
 Box.prototype.moveLeft = function () {
-  this.x -= 5
+  this.x -= this.position
   return this
 }
 
@@ -48,7 +50,7 @@ Box.prototype.resetGame = function () {
 }
 
 var animation = {
-  boxes: [new Box(-5, 280)],
+  boxes: [new Box(0, 280)],
   draw: function () {
     this.boxes.forEach(function (box) {
       return box.draw
@@ -115,6 +117,8 @@ var right = () => {
       animation.boxes.forEach(function (box){
       box.draw().moveRight()
     })
+    console.log("right")
+    requestAnimationFrame(gameLoop)
   })
 }
 
@@ -124,6 +128,8 @@ var down = () => {
       animation.boxes.forEach(function (box){
       box.draw().moveDown()
     })
+    console.log("down")
+    requestAnimationFrame(gameLoop)
   })
 }
 
@@ -133,6 +139,8 @@ var up = () => {
       animation.boxes.forEach(function (box){
       box.draw().moveUp()
     })
+    console.log("up")
+    requestAnimationFrame(gameLoop)
   })
 }
 
@@ -142,12 +150,13 @@ var left = () => {
       animation.boxes.forEach(function (box){
       box.draw().moveLeft()
     })
+    console.log("left")
+    requestAnimationFrame(gameLoop)
   })
 }
 
 var startLeftPlayer = () => {
   $('#start').on('click', function(event) {
-    right()
     right()
   })
 }
@@ -166,5 +175,5 @@ var resetGame = () => {
       box.draw().resetGame()
       })
     })
-  });
+  })
 }
