@@ -25,6 +25,24 @@ Box.prototype.moveRight = function () {
   return this
 }
 
+Box.prototype.moveDown = function () {
+  this.x -= 1
+  this.y++
+  return this
+}
+
+Box.prototype.moveUp = function () {
+  this.x -= 1
+  this.y--
+  return this
+}
+
+Box.prototype.moveLeft = function () {
+  this.x -= 1
+  this.x--
+  return this
+}
+
 var animation = {
   boxes: [new Box(0, 280)],
   draw: function () {
@@ -38,29 +56,41 @@ var animation = {
       return box.moveRight
     })
     return this
+  },
+  moveDown: function () {
+    this.boxes.forEach( function (box) {
+      return box.moveRight
+    })
+    return this
+  },
+  moveUp: function () {
+    this.boxes.forEach( function (box) {
+      return box.moveUp
+    })
+    return this
+  },
+  moveLeft: function () {
+    this.boxes.forEach( function (box) {
+      return box.moveLeft
+    })
+    return this
   }
 }
-
-// $('body').on('keyup', () => {
-//   if (event.which === 39) {
-//     move()
-//   }
-// })
 
 function keyboardMoves () {
   $('body').on('keyup', function(event) {
     switch(event.which) {
         case 37: // left
-        break;
+        return left()
 
         case 38: // up
-        break;
+        return up()
 
         case 39:
-        move();
+        return right()
 
         case 40: // down
-        break;
+        return down()
 
         default: return; // exit this handler for other keys
     }
@@ -68,11 +98,41 @@ function keyboardMoves () {
   })
 };
 
-var move = () => {
+var right = () => {
     requestAnimationFrame( function gameLoop() {
       context.clearRect(0, 0, canvas.width, canvas.height)
       animation.boxes.forEach(function (box){
       box.draw().moveRight()
+    })
+  requestAnimationFrame(gameLoop)
+  })
+}
+
+var down = () => {
+    requestAnimationFrame( function gameLoop() {
+      context.clearRect(0, 0, canvas.width, canvas.height)
+      animation.boxes.forEach(function (box){
+      box.draw().moveDown()
+    })
+  requestAnimationFrame(gameLoop)
+  })
+}
+
+var up = () => {
+    requestAnimationFrame( function gameLoop() {
+      context.clearRect(0, 0, canvas.width, canvas.height)
+      animation.boxes.forEach(function (box){
+      box.draw().moveUp()
+    })
+  requestAnimationFrame(gameLoop)
+  })
+}
+
+var left = () => {
+    requestAnimationFrame( function gameLoop() {
+      context.clearRect(0, 0, canvas.width, canvas.height)
+      animation.boxes.forEach(function (box){
+      box.draw().moveLeft()
     })
   requestAnimationFrame(gameLoop)
   })
