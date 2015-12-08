@@ -1,6 +1,7 @@
 'use strict'
 $(document).ready( () => {
   keyboardMoves();
+  startLeftPlayer()
 })
 
 let canvas = document.getElementById('game')
@@ -74,8 +75,6 @@ var animation = {
   }
 }
 
-var currentDirection = ""
-
 function keyboardMoves () {
   $('body').on('keydown', function(event) {
     switch(event.which) {
@@ -95,7 +94,8 @@ function keyboardMoves () {
     }
     event.preventDefault(); // prevent the default action (scroll / move caret)
   })
-};
+}
+
 
 var right = () => {
     requestAnimationFrame( function gameLoop() {
@@ -134,6 +134,8 @@ var left = () => {
 }
 
 var startLeftPlayer = () => {
-  right()
-  right()
+  $('#start').on('click', function(event) {
+    right()
+    right()
+  })
 }
