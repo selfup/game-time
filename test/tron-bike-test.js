@@ -48,8 +48,10 @@ describe('if tron-bike works', function () {
   it('should take and store a real grid object', function () {
     let bike = new TronBike(this.simpleGrid, 0, 2)
     assert.isObject(bike)
-    assert.strictEqual(bike.grid.firstBikeTrail, [1, 2])
-    assert.strictEqual(bike.grid.secondBikeTrail, [45, 67])
+    assert.strictEqual(bike.grid.firstBikeTrail[0], 1)
+    assert.strictEqual(bike.grid.firstBikeTrail[1], 2)
+    assert.strictEqual(bike.grid.secondBikeTrail[0], 45)
+    assert.strictEqual(bike.grid.secondBikeTrail[1], 67)
   })
 
 })
