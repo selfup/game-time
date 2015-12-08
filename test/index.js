@@ -1,0 +1,1 @@
+require('./bored-test.js');
