@@ -21,30 +21,27 @@ Box.prototype.draw = function () {
 }
 
 Box.prototype.moveRight = function () {
-  this.x++
+  this.x += 5
   return this
 }
 
 Box.prototype.moveDown = function () {
-  this.x -= 1
-  this.y++
+  this.y += 5
   return this
 }
 
 Box.prototype.moveUp = function () {
-  this.x -= 1
-  this.y--
+  this.y -= 5
   return this
 }
 
 Box.prototype.moveLeft = function () {
-  this.x -= 1
-  this.x--
+  this.x -= 5
   return this
 }
 
 var animation = {
-  boxes: [new Box(0, 280)],
+  boxes: [new Box(-5, 280)],
   draw: function () {
     this.boxes.forEach(function (box) {
       return box.draw
@@ -77,8 +74,10 @@ var animation = {
   }
 }
 
+var currentDirection = ""
+
 function keyboardMoves () {
-  $('body').on('keyup', function(event) {
+  $('body').on('keydown', function(event) {
     switch(event.which) {
         case 37: // left
         return left()
@@ -86,7 +85,7 @@ function keyboardMoves () {
         case 38: // up
         return up()
 
-        case 39:
+        case 39: // right
         return right()
 
         case 40: // down
@@ -104,7 +103,6 @@ var right = () => {
       animation.boxes.forEach(function (box){
       box.draw().moveRight()
     })
-  requestAnimationFrame(gameLoop)
   })
 }
 
@@ -114,7 +112,6 @@ var down = () => {
       animation.boxes.forEach(function (box){
       box.draw().moveDown()
     })
-  requestAnimationFrame(gameLoop)
   })
 }
 
@@ -124,7 +121,6 @@ var up = () => {
       animation.boxes.forEach(function (box){
       box.draw().moveUp()
     })
-  requestAnimationFrame(gameLoop)
   })
 }
 
@@ -134,6 +130,10 @@ var left = () => {
       animation.boxes.forEach(function (box){
       box.draw().moveLeft()
     })
-  requestAnimationFrame(gameLoop)
   })
+}
+
+var startLeftPlayer = () => {
+  right()
+  right()
 }
