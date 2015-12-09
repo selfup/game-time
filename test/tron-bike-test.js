@@ -111,4 +111,14 @@ describe('if tron-bike works', function () {
     assert.strictEqual(bike.canMoveDown, "dead")
   })
 
+  it('should know it can move in any direction at the start', function () {
+    let bike = new TronBike(this.simpleGrid, 0, 300)
+    assert.strictEqual(bike.canMove, "alive")
+  })
+
+  it('should know it cannot move in a certain direction', function () {
+    let bike = new TronBike(this.cannotMoveGrid, 23, 48)
+    assert.strictEqual(bike.canMove, "dead")
+  })
+
 })
