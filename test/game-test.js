@@ -8,8 +8,8 @@ describe('if the game works', function () {
 
   it('the grid is intantiated properly', function () {
     let game = new Game
-    assert.isObject(this.game)
-    // assert.strictEqual(this.game.grid.firstBikeTrail, '')
+    assert.isObject(game)
+    assert.deepEqual(game.grid.firstBikeTrail, [0, 300])
   })
 
 })
