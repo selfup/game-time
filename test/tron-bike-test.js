@@ -56,4 +56,17 @@ describe('if tron-bike works', function () {
     assert.deepEqual(bike.grid.secondBikeTrail, [45, 67])
   })
 
+  it('should be able to move right', function () {
+    let bike = new TronBike(this.simpleGrid, 0, 2)
+    assert.strictEqual(bike.moveRight, 1)
+    assert.strictEqual(bike.moveRight, 2)
+    assert.strictEqual(bike.moveRight, 3)
+    assert.strictEqual(bike.moveRight, 4)
+  })
+
+  it('should set x back to zero after going off the grid when moving right', function ()  {
+    let bike = new TronBike(this.simpleGrid, 899, 2)
+    assert.strictEqual(bike.moveRight, 900)
+    assert.strictEqual(bike.moveRight, 0)
+  })
 })
