@@ -92,22 +92,22 @@ describe('if tron-bike works', function () {
   })
 
   it('should know it can move up', function ()  {
-    let bike = new TronBike(this.simpleGrid, 300, 2)
+    let bike = new TronBike(this.simpleGrid, 300, 48)
     assert.strictEqual(bike.canMoveUp, "alive")
   })
 
   it('should know it cannot move up', function ()  {
-    let bike = new TronBike(this.cannotMoveGrid, 23, 2)
+    let bike = new TronBike(this.cannotMoveGrid, 23, 48)
     assert.strictEqual(bike.canMoveUp, "dead")
   })
 
   it('should know it can move down', function ()  {
-    let bike = new TronBike(this.simpleGrid, 300, 2)
+    let bike = new TronBike(this.simpleGrid, 300, 48)
     assert.strictEqual(bike.canMoveDown, "alive")
   })
 
   it('should know it cannot move down', function ()  {
-    let bike = new TronBike(this.cannotMoveGrid, 23, 2)
+    let bike = new TronBike(this.cannotMoveGrid, 23, 48)
     assert.strictEqual(bike.canMoveDown, "dead")
   })
 
