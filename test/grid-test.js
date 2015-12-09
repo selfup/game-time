@@ -5,8 +5,15 @@ const Grid = require('../lib/grid')
 describe('if grid works', function () {
 
   beforeEach(function() {
+    this.newGrid = new Grid
     this.simpleGrid = new Grid([1, 2], [45, 67]);
     this.complexGrid = new Grid([[1,2], [45, 67]], [[9,8], [35, 70]])
+  })
+
+  it('should instantiate a new grid', function () {
+    assert.isObject(this.newGrid)
+    assert.deepEqual(this.newGrid.firstBikeTrail, [0, 300])
+    assert.deepEqual(this.newGrid.secondBikeTrail, [900, 300])
   })
 
   it('should instantiate a new grid', function () {
