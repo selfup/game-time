@@ -117,4 +117,15 @@ describe('if the game works', function () {
     assert.strictEqual(game.gameStatus, "alive")
   })
 
+  // it('can move up and not die', function () {
+  //   let game = new Game
+  //   for (let i = 1; i < 4; i++) {
+  //     game.bikeOne.moveUp
+  //     game.fillBikeTrailOne
+  //     game.bikeTwo.moveUp
+  //     game.fillBikeTrailTwo
+  //   }
+  //   assert.strictEqual(game.gameStatus, "alive")
+  // })
+
 })
