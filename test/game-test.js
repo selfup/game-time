@@ -46,7 +46,7 @@ describe('if the game works', function () {
     game.bikeTwo.moveLeft
     game.fillBikeTrailOne
     game.fillBikeTrailTwo
-    assert.deepEqual(game.statusArray, ["bikeOne alive", "bikeTwo alive", "bikeOne alive", "bikeTwo alive"])
+    assert.deepEqual(game.statusArray, ["bikeOne alive", "bikeTwo alive", 1, 300, 899, 300])
   })
 
   it('can declare a player is dead after a move into a trail', function () {
@@ -61,9 +61,9 @@ describe('if the game works', function () {
     assert.strictEqual(game.gameStatus, "DOUBLE KILL!")
   })
 
-   it('declares that a bike is dead when it hits the bike trail', function () {
+   it('declares that both bikes are dead when it they colide', function () {
     let game = new Game
-    for (let i = 1; i < 451; i++) {
+    for (let i = 0; i < 451; i++) {
       game.bikeOne.moveRight
       game.fillBikeTrailOne
       game.bikeTwo.moveLeft
@@ -72,7 +72,7 @@ describe('if the game works', function () {
     assert.strictEqual(game.gameStatus, "DOUBLE KILL!")
   })
 
-  it('declares that a bike is not dead when it hits the bike trail', function () {
+  it('declares that a bike is not dead when it move a bunch but does not hit', function () {
     let game = new Game
     for (let i = 1; i < 450; i++) {
       game.bikeOne.moveRight
@@ -89,6 +89,31 @@ describe('if the game works', function () {
     game.fillBikeTrailOne
     game.bikeTwo.moveLeft
     game.fillBikeTrailTwo
+    assert.strictEqual(game.gameStatus, "alive")
+  })
+
+  it('declares that a bike is not dead when it move a bunch blah blah but does not hit', function () {
+    let game = new Game
+    for (let i = 1; i < 100; i++) {
+      game.bikeOne.moveRight
+      game.fillBikeTrailOne
+    }
+
+    for (let i = 1; i < 601; i++) {
+      game.bikeTwo.moveLeft
+      game.fillBikeTrailTwo
+    }
+    assert.notStrictEqual(game.gameStatus, "DOUBLE KILL!")
+  })
+
+  it('declares that a bike is not dead when it does not hit a bike trail', function () {
+    let game = new Game
+    for (let i = 1; i < 400; i++) {
+      game.bikeOne.moveRight
+      game.fillBikeTrailOne
+      game.bikeTwo.moveLeft
+      game.fillBikeTrailTwo
+    }
     assert.strictEqual(game.gameStatus, "alive")
   })
 
