@@ -61,4 +61,35 @@ describe('if the game works', function () {
     assert.strictEqual(game.gameStatus, "DOUBLE KILL!")
   })
 
+   it('declares that a bike is dead when it hits the bike trail', function () {
+    let game = new Game
+    for (let i = 1; i < 451; i++) {
+      game.bikeOne.moveRight
+      game.fillBikeTrailOne
+      game.bikeTwo.moveLeft
+      game.fillBikeTrailTwo
+    }
+    assert.strictEqual(game.gameStatus, "DOUBLE KILL!")
+  })
+
+  it('declares that a bike is not dead when it hits the bike trail', function () {
+    let game = new Game
+    for (let i = 1; i < 450; i++) {
+      game.bikeOne.moveRight
+      game.fillBikeTrailOne
+      game.bikeTwo.moveLeft
+      game.fillBikeTrailTwo
+    }
+    assert.notStrictEqual(game.gameStatus, "DOUBLE KILL!")
+  })
+
+  it('declares that a bike is dead when it hits the bike trail', function () {
+    let game = new Game
+    game.bikeOne.moveRight
+    game.fillBikeTrailOne
+    game.bikeTwo.moveLeft
+    game.fillBikeTrailTwo
+    assert.strictEqual(game.gameStatus, "alive")
+  })
+
 })
