@@ -13,17 +13,17 @@ describe('if the game works', function () {
 
   it('the firstBikeTrail is intantiated properly', function () {
     let game = new Game
-    assert.deepEqual(game.grid.firstBikeTrail, [0, 300])
+    assert.deepEqual(game.grid.firstBikeTrail, [[ 0, 300 ]])
   })
 
   it('the secondBikeTrail is intantiated properly', function () {
     let game = new Game
-    assert.deepEqual(game.grid.secondBikeTrail, [900, 300])
+    assert.deepEqual(game.grid.secondBikeTrail, [[900, 300]])
   })
 
   it('the combinedTrails is intantiated properly', function () {
     let game = new Game
-    assert.deepEqual(game.grid.combinedTrails, [ 0, 300, 900, 300 ])
+    assert.deepEqual(game.grid.combinedTrails, [[ 0, 300] , [900, 300]])
   })
 
   it('can add to combinedTrails on move', function () {
@@ -32,7 +32,7 @@ describe('if the game works', function () {
     game.bikeTwo.moveLeft
     game.fillBikeTrailOne
     game.fillBikeTrailTwo
-    assert.deepEqual(game.grid.combinedTrails, [ 0, 300, 1, 300, 900, 300, 899, 300 ])
+    assert.deepEqual(game.grid.combinedTrails, [[ 0, 300 ], [ 1, 300 ], [ 900, 300 ], [ 899, 300 ]])
   })
 
   it('can declare a player has hit a trail and the game is over', function () {
@@ -46,7 +46,7 @@ describe('if the game works', function () {
     game.bikeTwo.moveLeft
     game.fillBikeTrailOne
     game.fillBikeTrailTwo
-    assert.deepEqual(game.statusArray, ["bikeOne alive", "bikeTwo alive", 1, 300, 899, 300])
+    assert.deepEqual(game.statusArray, ["bikeOne alive", "bikeTwo alive"])
   })
 
   it('can declare a player is dead after a move into a trail', function () {
@@ -115,30 +115,6 @@ describe('if the game works', function () {
       game.fillBikeTrailTwo
     }
     assert.strictEqual(game.gameStatus, "alive")
-  })
-
-  it('knows about the xIndexFinder array', function () {
-    let game = new Game
-    for (let i = 1; i < 4; i++) {
-      game.bikeOne.moveRight
-      game.fillBikeTrailOne
-      game.bikeTwo.moveLeft
-      game.fillBikeTrailTwo
-    }
-    assert.strictEqual(game.gameStatus, "alive")
-    assert.deepEqual(game.bikeOne.xIndexFinder, [ 0, 1, 2, 3, 900, 899, 898, 897 ])
-  })
-
-  it('knows about the yIndexFinder array', function () {
-    let game = new Game
-    for (let i = 1; i < 4; i++) {
-      game.bikeOne.moveRight
-      game.fillBikeTrailOne
-      game.bikeTwo.moveLeft
-      game.fillBikeTrailTwo
-    }
-    assert.strictEqual(game.gameStatus, "alive")
-    assert.deepEqual(game.bikeOne.yIndexFinder, [ 300, 300, 300, 300, 300, 300, 300, 300 ])
   })
 
 })
