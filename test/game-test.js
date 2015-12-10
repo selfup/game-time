@@ -83,7 +83,7 @@ describe('if the game works', function () {
     assert.notStrictEqual(game.gameStatus, "DOUBLE KILL!")
   })
 
-  it('declares that a bike is dead when it hits the bike trail', function () {
+  it('declares that both bikes are alive when they move only once', function () {
     let game = new Game
     game.bikeOne.moveRight
     game.fillBikeTrailOne
@@ -115,6 +115,30 @@ describe('if the game works', function () {
       game.fillBikeTrailTwo
     }
     assert.strictEqual(game.gameStatus, "alive")
+  })
+
+  it('knows about the xIndexFinder array', function () {
+    let game = new Game
+    for (let i = 1; i < 4; i++) {
+      game.bikeOne.moveRight
+      game.fillBikeTrailOne
+      game.bikeTwo.moveLeft
+      game.fillBikeTrailTwo
+    }
+    assert.strictEqual(game.gameStatus, "alive")
+    assert.deepEqual(game.bikeOne.xIndexFinder, [ 0, 1, 2, 3, 900, 899, 898, 897 ])
+  })
+
+  it('knows about the yIndexFinder array', function () {
+    let game = new Game
+    for (let i = 1; i < 4; i++) {
+      game.bikeOne.moveRight
+      game.fillBikeTrailOne
+      game.bikeTwo.moveLeft
+      game.fillBikeTrailTwo
+    }
+    assert.strictEqual(game.gameStatus, "alive")
+    assert.deepEqual(game.bikeOne.yIndexFinder, [ 300, 300, 300, 300, 300, 300, 300, 300 ])
   })
 
 })
