@@ -42,8 +42,8 @@ describe('if tron-bike works', function () {
     assert.equal(bike.grid, "grid")
     assert.equal(bike.x, 23)
     assert.equal(bike.y, 42)
-    assert.equal(bike.width, 20)
-    assert.equal(bike.height, 20)
+    assert.equal(bike.width, 2)
+    assert.equal(bike.height, 2)
   })
 
   it('should take and store a real grid object', function () {
