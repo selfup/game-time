@@ -73,27 +73,27 @@ describe('if tron-bike works', function () {
 
   it('should know it can move right', function ()  {
     let bike = new TronBike(this.simpleGrid, 300, 2)
-    assert.strictEqual(bike.canMoveRight, "alive")
+    assert.strictEqual(bike.canMove, "alive")
   })
 
   it('should know it cannot move right', function ()  {
     let bike = new TronBike(this.cannotMoveGrid, 23, 2)
-    assert.strictEqual(bike.canMoveRight, "dead")
+    assert.strictEqual(bike.canMove, "dead")
   })
 
   it('should know it can move left', function ()  {
     let bike = new TronBike(this.simpleGrid, 300, 2)
-    assert.strictEqual(bike.canMoveLeft, "alive")
+    assert.strictEqual(bike.canMove, "alive")
   })
 
   it('should know it cannot move left', function ()  {
     let bike = new TronBike(this.cannotMoveGrid, 23, 2)
-    assert.strictEqual(bike.canMoveLeft, "dead")
+    assert.strictEqual(bike.canMove, "dead")
   })
 
   it('should know it can move up', function ()  {
     let bike = new TronBike(this.simpleGrid, 300, 48)
-    assert.strictEqual(bike.canMoveUp, "alive")
+    assert.strictEqual(bike.canMove, "alive")
   })
 
   it('should know it cannot move up', function ()  {
@@ -103,7 +103,7 @@ describe('if tron-bike works', function () {
 
   it('should know it can move down', function ()  {
     let bike = new TronBike(this.simpleGrid, 300, 48)
-    assert.strictEqual(bike.canMoveDown, "alive")
+    assert.strictEqual(bike.canMove, "alive")
   })
 
   it('should know it cannot move down', function ()  {
