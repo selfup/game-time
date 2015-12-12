@@ -44,7 +44,7 @@ describe('if the game works', function () {
     assert.deepEqual(game.grid.firstBikeTrail, [ [ 0, 300 ], [ 1, 300 ] ])
   })
 
-   it('declares that both bikes are dead when it they colide', function () {
+   it('declares that both bikes are dead when they colide', function () {
     let game = new Game
     for (let i = 0; i < 451; i++) {
       game.bikeOne.moveRight
@@ -55,7 +55,7 @@ describe('if the game works', function () {
     assert.strictEqual(game.gameStatus, "DOUBLE KILL!")
   })
 
-  it('declares that a bike is not dead when it move a bunch but does not hit', function () {
+  it('declares that a bike is not dead when it moves right a bunch but does not hit a trail', function () {
     let game = new Game
     for (let i = 1; i < 45; i++) {
       game.bikeOne.moveRight
@@ -66,7 +66,7 @@ describe('if the game works', function () {
     assert.notStrictEqual(game.gameStatus, "DOUBLE KILL!")
   })
 
-  it('is not dead when it move a bunch but does not hit', function () {
+  it('is not dead when it moves up and does not hit a trail', function () {
     let game = new Game
     for (let i = 1; i < 2; i++) {
       game.bikeOne.moveUp
@@ -99,14 +99,14 @@ describe('if the game works', function () {
     assert.strictEqual(game.gameStatus, "Player One Wins!")
   })
 
-  it('can declare that when both players hit each other its a double kill', function () {
+  it('can declare that when both players are dead its a double kill', function () {
     let game = new Game
     game.bikeOneStatus = "Dead"
     game.bikeTwoStatus = "Dead"
     assert.strictEqual(game.gameStatus, "DOUBLE KILL!")
   })
 
-  it('declares that both bikes are dead when it they colide', function () {
+  it('declares that both bikes are dead when they move and colide making a double kill', function () {
     let game = new Game
     for (let i = 0; i < 451; i++) {
       game.bikeOne.moveRight
@@ -117,7 +117,7 @@ describe('if the game works', function () {
     assert.strictEqual(game.gameStatus, "DOUBLE KILL!")
   })
 
-  it('declares that a bike is not dead when it move a bunch but does not hit', function () {
+  it('declares that a bike is not a double kill when it moves but does not hit a trail', function () {
     let game = new Game
     for (let i = 1; i < 450; i++) {
       game.bikeOne.moveRight
@@ -137,7 +137,7 @@ describe('if the game works', function () {
     assert.strictEqual(game.gameStatus, "alive")
   })
 
-  it('declares that a bike is not dead when it move a bunch blah blah but does not hit', function () {
+  it('declares that a bike is not dead when it move a bunch but does not hit a trail', function () {
     let game = new Game
     for (let i = 1; i < 67; i++) {
       game.bikeOne.moveDown
