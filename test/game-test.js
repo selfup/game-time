@@ -52,8 +52,8 @@ describe('if the game works', function () {
       game.fillBikeTrailOne
       game.fillBikeTrailTwo
     }
-    console.log(game.grid.firstBikeTrail);
-    console.log(game.grid.secondBikeTrail);
+    // console.log(game.grid.firstBikeTrail);
+    // console.log(game.grid.secondBikeTrail);
     assert.strictEqual(game.gameStatus, "DOUBLE KILL!")
   })
 
@@ -138,10 +138,12 @@ describe('if the game works', function () {
 
   it('declares that a bike is not dead when it move a bunch blah blah but does not hit', function () {
     let game = new Game
-    for (let i = 1; i < 100; i++) {
-      game.bikeOne.moveRight
+    for (let i = 1; i < 67; i++) {
+      game.bikeOne.moveDown
       game.fillBikeTrailOne
     }
+
+    console.log(game.grid.firstBikeTrail);
 
     for (let i = 1; i < 601; i++) {
       game.bikeTwo.moveLeft
