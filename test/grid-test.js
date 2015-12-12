@@ -1,6 +1,7 @@
 const chai = require('chai')
 const assert = chai.assert
 const Grid = require('../lib/grid')
+// const TronBike = require('../lib/tron-bike')
 
 describe('if grid works', function () {
 
