@@ -147,7 +147,7 @@ describe('if the game works', function () {
       game.bikeTwo.moveLeft
       game.fillBikeTrailTwo
     }
-    assert.notStrictEqual(game.gameStatus, "DOUBLE KILL!")
+    assert.strictEqual(game.gameStatus, "alive")
   })
 
 })
