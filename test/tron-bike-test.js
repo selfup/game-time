@@ -89,7 +89,7 @@ describe('if tron-bike works', function () {
     assert.strictEqual(bike.isAlive, false)
   })
 
-  it('should know it can move up', function ()  {
+  it('should know it can mo ve up', function ()  {
     let bike = new TronBike(this.simpleGrid, 300, 48)
     assert.strictEqual(bike.isAlive, true)
   })
