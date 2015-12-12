@@ -13,26 +13,70 @@ describe('if the game works', function () {
 
   it('the firstBikeTrail is intantiated properly', function () {
     let game = new Game
-    assert.deepEqual(game.grid.firstBikeTrail, [0, 300])
+    assert.deepEqual(game.grid.firstBikeTrail, [[ 0, 300 ]])
   })
 
   it('the secondBikeTrail is intantiated properly', function () {
     let game = new Game
-    assert.deepEqual(game.grid.secondBikeTrail, [900, 300])
+    assert.deepEqual(game.grid.secondBikeTrail, [[900, 300]])
   })
 
   it('the combinedTrails is intantiated properly', function () {
     let game = new Game
-    assert.deepEqual(game.grid.combinedTrails, [ 0, 300, 900, 300 ])
+    assert.deepEqual(game.grid.combinedTrails, [[ 0, 300] , [900, 300]])
   })
 
   it('can add to combinedTrails on move', function () {
     let game = new Game
     game.bikeOne.moveRight
+    game.fillBikeTrailOne
+    game.bikeTwo.moveLeft
+    game.fillBikeTrailTwo
+    assert.deepEqual(game.grid.combinedTrails, [ [ 0, 300 ], [ 1, 300 ], [ 900, 300 ], [ 899, 300 ] ])
+  })
+
+  it('can declare a player is not dead after a move on start', function () {
+    let game = new Game
+    game.bikeOne.moveRight
     game.bikeTwo.moveLeft
     game.fillBikeTrailOne
     game.fillBikeTrailTwo
-    assert.deepEqual(game.grid.combinedTrails, [ 0, 300, 1, 300, 900, 300, 899, 300 ])
+    assert.deepEqual(game.grid.firstBikeTrail, [ [ 0, 300 ], [ 1, 300 ] ])
+  })
+
+   it('declares that both bikes are dead when it they colide', function () {
+    let game = new Game
+    for (let i = 0; i < 451; i++) {
+      game.bikeOne.moveRight
+      game.bikeTwo.moveLeft
+      game.fillBikeTrailOne
+      game.fillBikeTrailTwo
+    }
+    // console.log(game.grid.firstBikeTrail);
+    // console.log(game.grid.secondBikeTrail);
+    assert.strictEqual(game.gameStatus, "DOUBLE KILL!")
+  })
+
+  it('declares that a bike is not dead when it move a bunch but does not hit', function () {
+    let game = new Game
+    for (let i = 1; i < 45; i++) {
+      game.bikeOne.moveRight
+      game.fillBikeTrailOne
+      game.bikeTwo.moveLeft
+      game.fillBikeTrailTwo
+    }
+    assert.notStrictEqual(game.gameStatus, "DOUBLE KILL!")
+  })
+
+  it('is not dead when it move a bunch but does not hit', function () {
+    let game = new Game
+    for (let i = 1; i < 2; i++) {
+      game.bikeOne.moveUp
+      game.fillBikeTrailOne
+      game.bikeTwo.moveDown
+      game.fillBikeTrailTwo
+    }
+    assert.notStrictEqual(game.gameStatus, "DOUBLE KILL!")
   })
 
   it('can declare a player has hit a trail and the game is over', function () {
@@ -46,18 +90,18 @@ describe('if the game works', function () {
     game.bikeTwo.moveLeft
     game.fillBikeTrailOne
     game.fillBikeTrailTwo
-    assert.deepEqual(game.statusArray, ["bikeOne alive", "bikeTwo alive", 1, 300, 899, 300])
+    assert.deepEqual(game.statusArray, ["bikeOne alive", "bikeTwo alive"])
   })
 
   it('can declare a player is dead after a move into a trail', function () {
     let game = new Game
-    game.statusArray.push("bikeTwo dead", "bikeOne alive")
+    game.statusArray.push("bikeTwo Dead", "bikeOne alive")
     assert.strictEqual(game.gameStatus, "Player One Wins!")
   })
 
   it('can declare that when both players hit each other its a double kill', function () {
     let game = new Game
-    game.statusArray.push("bikeOne dead", "bikeTwo dead")
+    game.statusArray.push("bikeOne Dead", "bikeTwo Dead")
     assert.strictEqual(game.gameStatus, "DOUBLE KILL!")
   })
 
@@ -94,51 +138,18 @@ describe('if the game works', function () {
 
   it('declares that a bike is not dead when it move a bunch blah blah but does not hit', function () {
     let game = new Game
-    for (let i = 1; i < 100; i++) {
-      game.bikeOne.moveRight
+    for (let i = 1; i < 67; i++) {
+      game.bikeOne.moveDown
       game.fillBikeTrailOne
     }
+
+    console.log(game.grid.firstBikeTrail);
 
     for (let i = 1; i < 601; i++) {
       game.bikeTwo.moveLeft
       game.fillBikeTrailTwo
     }
-    assert.notStrictEqual(game.gameStatus, "DOUBLE KILL!")
-  })
-
-  it('declares that a bike is not dead when it does not hit a bike trail', function () {
-    let game = new Game
-    for (let i = 1; i < 400; i++) {
-      game.bikeOne.moveRight
-      game.fillBikeTrailOne
-      game.bikeTwo.moveLeft
-      game.fillBikeTrailTwo
-    }
     assert.strictEqual(game.gameStatus, "alive")
-  })
-
-  it('knows about the xIndexFinder array', function () {
-    let game = new Game
-    for (let i = 1; i < 4; i++) {
-      game.bikeOne.moveRight
-      game.fillBikeTrailOne
-      game.bikeTwo.moveLeft
-      game.fillBikeTrailTwo
-    }
-    assert.strictEqual(game.gameStatus, "alive")
-    assert.deepEqual(game.bikeOne.xIndexFinder, [ 0, 1, 2, 3, 900, 899, 898, 897 ])
-  })
-
-  it('knows about the yIndexFinder array', function () {
-    let game = new Game
-    for (let i = 1; i < 4; i++) {
-      game.bikeOne.moveRight
-      game.fillBikeTrailOne
-      game.bikeTwo.moveLeft
-      game.fillBikeTrailTwo
-    }
-    assert.strictEqual(game.gameStatus, "alive")
-    assert.deepEqual(game.bikeOne.yIndexFinder, [ 300, 300, 300, 300, 300, 300, 300, 300 ])
   })
 
 })
