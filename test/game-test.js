@@ -144,8 +144,6 @@ describe('if the game works', function () {
       game.fillBikeTrailOne
     }
 
-    console.log(game.grid.firstBikeTrail);
-
     for (let i = 1; i < 601; i++) {
       game.bikeTwo.moveLeft
       game.fillBikeTrailTwo
