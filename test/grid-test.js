@@ -13,8 +13,8 @@ describe('if grid works', function () {
 
   it('should instantiate a new grid', function () {
     assert.isObject(this.newGrid)
-    assert.deepEqual(this.newGrid.firstBikeTrail, [[0, 300]])
-    assert.deepEqual(this.newGrid.secondBikeTrail, [[900, 300]])
+    assert.deepEqual(this.newGrid.firstBikeTrail, [[0, 150]])
+    assert.deepEqual(this.newGrid.secondBikeTrail, [[450, 150]])
   })
 
   it('should instantiate a new grid', function () {

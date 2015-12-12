@@ -50,7 +50,7 @@ describe('if tron-bike works', function () {
     let bike = new TronBike(this.simpleGrid, 0, 2)
     assert.isObject(bike)
     assert.deepEqual(bike.grid.firstBikeTrail, [ [ 1, 2 ], [ 45, 67 ] ])
-    assert.deepEqual(bike.grid.secondBikeTrail, [ [ 900, 300 ] ])
+    assert.deepEqual(bike.grid.secondBikeTrail, [ [ 450, 150 ] ])
   })
 
   it('should be able to move right', function () {
