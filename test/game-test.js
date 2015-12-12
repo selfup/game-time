@@ -46,7 +46,7 @@ describe('if the game works', function () {
 
    it('declares that both bikes are dead when it they colide', function () {
     let game = new Game
-    for (let i = 0; i < 453; i++) {
+    for (let i = 0; i < 451; i++) {
       game.bikeOne.moveRight
       game.bikeTwo.moveLeft
       game.fillBikeTrailOne
@@ -59,10 +59,21 @@ describe('if the game works', function () {
 
   it('declares that a bike is not dead when it move a bunch but does not hit', function () {
     let game = new Game
-    for (let i = 1; i < 4; i++) {
+    for (let i = 1; i < 45; i++) {
       game.bikeOne.moveRight
       game.fillBikeTrailOne
       game.bikeTwo.moveLeft
+      game.fillBikeTrailTwo
+    }
+    assert.notStrictEqual(game.gameStatus, "DOUBLE KILL!")
+  })
+
+  it('is not dead when it move a bunch but does not hit', function () {
+    let game = new Game
+    for (let i = 1; i < 2; i++) {
+      game.bikeOne.moveUp
+      game.fillBikeTrailOne
+      game.bikeTwo.moveDown
       game.fillBikeTrailTwo
     }
     assert.notStrictEqual(game.gameStatus, "DOUBLE KILL!")
