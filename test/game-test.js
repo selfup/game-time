@@ -52,8 +52,6 @@ describe('if the game works', function () {
       game.fillBikeTrailOne
       game.fillBikeTrailTwo
     }
-    // console.log(game.grid.firstBikeTrail);
-    // console.log(game.grid.secondBikeTrail);
     assert.strictEqual(game.gameStatus, "DOUBLE KILL!")
   })
 
@@ -79,9 +77,10 @@ describe('if the game works', function () {
     assert.notStrictEqual(game.gameStatus, "DOUBLE KILL!")
   })
 
-  it('can declare a player has hit a trail and the game is over', function () {
+  it('knows that both bikes are alive on start', function () {
     let game = new Game
-    assert.deepEqual(game.statusArray, ["bikeOne alive", "bikeTwo alive"])
+    assert.strictEqual(game.bikeOneStatus, "Alive")
+    assert.strictEqual(game.bikeTwoStatus, "Alive")
   })
 
   it('can declare a player is not dead after a move on start', function () {
@@ -90,22 +89,24 @@ describe('if the game works', function () {
     game.bikeTwo.moveLeft
     game.fillBikeTrailOne
     game.fillBikeTrailTwo
-    assert.deepEqual(game.statusArray, ["bikeOne alive", "bikeTwo alive"])
+    assert.strictEqual(game.bikeOneStatus, "Alive")
+    assert.strictEqual(game.bikeTwoStatus, "Alive")
   })
 
   it('can declare a player is dead after a move into a trail', function () {
     let game = new Game
-    game.statusArray.push("bikeTwo Dead", "bikeOne alive")
+    game.bikeTwoStatus = "Dead"
     assert.strictEqual(game.gameStatus, "Player One Wins!")
   })
 
   it('can declare that when both players hit each other its a double kill', function () {
     let game = new Game
-    game.statusArray.push("bikeOne Dead", "bikeTwo Dead")
+    game.bikeOneStatus = "Dead"
+    game.bikeTwoStatus = "Dead"
     assert.strictEqual(game.gameStatus, "DOUBLE KILL!")
   })
 
-   it('declares that both bikes are dead when it they colide', function () {
+  it('declares that both bikes are dead when it they colide', function () {
     let game = new Game
     for (let i = 0; i < 451; i++) {
       game.bikeOne.moveRight
