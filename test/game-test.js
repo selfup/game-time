@@ -13,17 +13,17 @@ describe('if the game works', function () {
 
   it('the firstBikeTrail is intantiated properly', function () {
     let game = new Game
-    assert.deepEqual(game.grid.firstBikeTrail, [[ 0, 300 ]])
+    assert.deepEqual(game.grid.firstBikeTrail, [[ 0, 150 ]])
   })
 
   it('the secondBikeTrail is intantiated properly', function () {
     let game = new Game
-    assert.deepEqual(game.grid.secondBikeTrail, [[900, 300]])
+    assert.deepEqual(game.grid.secondBikeTrail, [[450, 150]])
   })
 
   it('the combinedTrails is intantiated properly', function () {
     let game = new Game
-    assert.deepEqual(game.grid.combinedTrails, [[ 0, 300] , [900, 300]])
+    assert.deepEqual(game.grid.combinedTrails, [[ 0, 150] , [450, 150]])
   })
 
   it('can add to combinedTrails on move', function () {
@@ -32,7 +32,7 @@ describe('if the game works', function () {
     game.fillBikeTrailOne
     game.bikeTwo.moveLeft
     game.fillBikeTrailTwo
-    assert.deepEqual(game.grid.combinedTrails, [ [ 0, 300 ], [ 1, 300 ], [ 900, 300 ], [ 899, 300 ] ])
+    assert.deepEqual(game.grid.combinedTrails, [ [ 0, 150 ], [ 1, 150 ], [ 450, 150 ], [ 449, 150 ] ])
   })
 
   it('can declare a player is not dead after a move on start', function () {
@@ -41,7 +41,7 @@ describe('if the game works', function () {
     game.bikeTwo.moveLeft
     game.fillBikeTrailOne
     game.fillBikeTrailTwo
-    assert.deepEqual(game.grid.firstBikeTrail, [ [ 0, 300 ], [ 1, 300 ] ])
+    assert.deepEqual(game.grid.firstBikeTrail, [ [ 0, 150 ], [ 1, 150 ] ])
   })
 
    it('declares that both bikes are dead when they colide', function () {
@@ -108,7 +108,7 @@ describe('if the game works', function () {
 
   it('declares that both bikes are dead when they move and colide making a double kill', function () {
     let game = new Game
-    for (let i = 0; i < 451; i++) {
+    for (let i = 0; i < 300; i++) {
       game.bikeOne.moveRight
       game.fillBikeTrailOne
       game.bikeTwo.moveLeft
@@ -119,7 +119,7 @@ describe('if the game works', function () {
 
   it('declares that a bike is not a double kill when it moves but does not hit a trail', function () {
     let game = new Game
-    for (let i = 1; i < 450; i++) {
+    for (let i = 1; i < 150; i++) {
       game.bikeOne.moveRight
       game.fillBikeTrailOne
       game.bikeTwo.moveLeft
@@ -144,7 +144,7 @@ describe('if the game works', function () {
       game.fillBikeTrailOne
     }
 
-    for (let i = 1; i < 601; i++) {
+    for (let i = 1; i < 71; i++) {
       game.bikeTwo.moveLeft
       game.fillBikeTrailTwo
     }
