@@ -62,9 +62,9 @@ describe('if tron-bike works', function () {
   })
 
   it('should set x back to zero after going off the grid when moving right', function ()  {
-    let bike = new TronBike(this.simpleGrid, 899, 2)
-    assert.strictEqual(bike.moveRight, 900)
+    let bike = new TronBike(this.simpleGrid, 450, 2)
     assert.strictEqual(bike.moveRight, 0)
+    assert.strictEqual(bike.moveRight, 1)
   })
 
   it('should know it can move right', function ()  {
