@@ -10,3 +10,20 @@ canvas {
   border-width: large;
   border-radius: 25px;
 }
+
+.start {
+  margin-left: 130px;
+  background-color: black;
+  color: white;
+  border-style: solid;
+  border-color: teal;
+  border-radius: 25px;
+}
+
+.reset {
+  background-color: black;
+  color: white;
+  border-style: solid;
+  border-color: teal;
+  border-radius: 25px;
+}
