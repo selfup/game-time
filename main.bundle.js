@@ -171,6 +171,7 @@
 	  $('#reset').on('click', function (event) {
 	    game = new Game();
 	    context.clearRect(0, 0, canvas.width, canvas.height);
+	    $('#player_status').children().remove();
 	  });
 	};
 
