@@ -27,3 +27,7 @@ canvas {
   border-color: teal;
   border-radius: 25px;
 }
+
+#player_status {
+  color: white;
+}
