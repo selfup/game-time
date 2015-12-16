@@ -12,7 +12,7 @@ canvas {
 }
 
 .start {
-  margin-left: 130px;
+  margin-left: 140px;
   background-color: black;
   color: white;
   border-style: solid;
@@ -28,6 +28,18 @@ canvas {
   border-radius: 25px;
 }
 
+.submit {
+  background-color: black;
+  color: white;
+  border-style: solid;
+  border-color: teal;
+  border-radius: 25px;
+}
+
 #player_status {
   color: white;
+}
+
+.players-form {
+  color: teal;
 }
