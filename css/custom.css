@@ -63,8 +63,13 @@ canvas {
 }
 
 .name {
-  margin-top: 1px;
+ margin-top: 1px;
  font-size: 12px;
  margin-left: 10px;
  color: white;
+}
+
+#current-level {
+  margin-left: 175px;
+  color: white;
 }
