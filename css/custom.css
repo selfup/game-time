@@ -1,33 +1,70 @@
 body {
-  padding-top: 50px;
-  background-image: url("../images/tron-bg.jpg");
+ padding-top: 50px;
+ background-image: url("../images/tron-bg.jpg");
 }
 
 canvas {
-  background: url('../images/grid.jpg');
-  border-style: solid;
-  border-color: teal;
-  border-width: large;
-  border-radius: 25px;
+ background: url('../images/grid.jpg');
+ border-style: solid;
+ border-color: teal;
+ border-width: large;
+ border-radius: 25px;
 }
 
 .start {
-  margin-left: 130px;
-  background-color: black;
-  color: white;
-  border-style: solid;
-  border-color: teal;
-  border-radius: 25px;
+ margin-left: 140px;
+ background-color: black;
+ color: white;
+ border-style: solid;
+ border-color: teal;
+ border-radius: 25px;
 }
 
 .reset {
-  background-color: black;
-  color: white;
-  border-style: solid;
-  border-color: teal;
-  border-radius: 25px;
+ background-color: black;
+ color: white;
+ border-style: solid;
+ border-color: teal;
+ border-radius: 25px;
+}
+
+.submit {
+ background-color: black;
+ color: white;
+ border-style: solid;
+ border-color: teal;
+ border-radius: 25px;
 }
 
 #player_status {
-  color: white;
+ color: white;
+}
+
+.players-form {
+ color: teal;
+}
+
+/*.scoreboard {
+ margin-right: 20px;
+ margin-left: 20px;
+ background-color: black;
+ color: white;
+ border-style: solid;
+ border-color: teal;
+ border-radius: 25px;
+}*/
+
+.title {
+ margin-top: 1px;
+ font-size: 18px;
+ font-weight: underline;
+ margin-left: 10px;
+ color: white;
+}
+
+.name {
+  margin-top: 1px;
+ font-size: 12px;
+ margin-left: 10px;
+ color: white;
 }
