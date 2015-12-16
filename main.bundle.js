@@ -206,7 +206,7 @@
 	};
 
 	var logNames = function logNames() {
-	  var rootUrl = 'http://selfup.me/';var fullUrl = window.location.href;
+	  var rootUrl = 'http://selfup.me/game-time/';var fullUrl = window.location.href;
 	  var p1 = '?playerone=';var p2 = '&playertwo=';
 	  $('#start').on('click', function (event) {
 	    playerOneName = fullUrl.split(p1).join("").split(p2)[0].replace(rootUrl, '');
