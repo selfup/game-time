@@ -44,10 +44,6 @@
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
-	// require('./tron.js');
-	// require('./tron-bike.js')
-	// require('./game.js')
-	// require('./grid.js')
 	'use strict';
 
 	__webpack_require__(1);
@@ -64,7 +60,7 @@
 	var $ = __webpack_require__(8);
 
 	$(document).ready(function () {
-	  resetGame();trueKeys();falseKeys();startPlayers();playGame();
+	  resetGame();trueKeys();falseKeys();startPlayers();playGame();logNames();nextLevel();updateRealScores();
 	});
 
 	var canvas = document.getElementById('game');
@@ -72,6 +68,12 @@
 	var game = new Game();
 	var currentKeys = {};
 	var start = "no tron";
+	var playerOneName = "";
+	var playerOneScore = 0;
+	var playerTwoName = "";
+	var playerTwoScore = 0;
+	var level = 0;
+	var levelUp = false;
 
 	var drawOne = function drawOne() {
 	  context.fillStyle = "#FF0000";
@@ -134,23 +136,65 @@
 	};
 
 	var trueKeys = function trueKeys() {
-	  document.addEventListener('keydown', function (event) {
+	  $('#start, #reset').on('keydown', function (event) {
 	    if (game.gameStatus !== "alive") {
 	      $('<p>' + game.gameStatus + '</p>').appendTo('#player_status');
+	      updatePlayersAndScores();
+	      levelUp = false;
+	      start = "no tron";
 	    } else if (start === "le tron") {
+	      levelUp = true;
 	      currentKeys[event.keyCode] = true;
+	      updatePlayersAndScores();
 	      executeTrueKeyFunctions();
 	    }
 	    event.preventDefault();
 	  });
+	  setTimeout(nextLevel, 10000);
 	};
 
 	var falseKeys = function falseKeys() {
-	  document.addEventListener('keyup', function (event) {
+	  $('#start, #reset').on('keyup', function (event) {
 	    currentKeys[event.keyCode] = false;
 	    executeTrueKeyFunctions();
 	    event.preventDefault();
 	  });
+	};
+
+	var updatePlayersAndScores = function updatePlayersAndScores() {
+	  updateRealScores();
+	  removeAndUpdateScores();
+	  updateLevel();
+	};
+
+	var removeAndUpdateScores = function removeAndUpdateScores() {
+	  $('#playerOne').empty();
+	  $('#playerOne').append('<div id="playerOne" style="float: left; width: 170px;">' + playerOneName + '</div>');
+	  $('#playerOneScore').empty();
+	  $('#playerOneScore').append('' + playerOneScore);
+	  $('#playerTwo').empty();
+	  $('#playerTwo').append('<div id="playerTwo" style="float: left; width: 170px;">' + playerTwoName + '</div>');
+	  $('#playerTwoScore').empty();
+	  $('#playerTwoScore').append('' + playerTwoScore);
+	};
+
+	var updateLevel = function updateLevel() {
+	  $('#current-level').empty();
+	  $('#current-level').append('<div id="current-level">Current Level: ' + level + '</div>');
+	};
+
+	var updateRealScores = function updateRealScores() {
+	  if (start === "le tron") {
+	    updateIndividualScores();
+	  }
+	};
+
+	var updateIndividualScores = function updateIndividualScores() {
+	  if (game.gameStatus === "Player One Wins!") {
+	    playerOneScore += 1;
+	  } else if (game.gameStatus === "Player Two Wins!") {
+	    playerTwoScore += 1;
+	  }
 	};
 
 	var playGame = function playGame() {
@@ -161,17 +205,40 @@
 	  }
 	};
 
+	var logNames = function logNames() {
+	  var rootUrl = 'http://localhost:8080/';var fullUrl = window.location.href;
+	  var p1 = '?playerone=';var p2 = '&playertwo=';
+	  $('#start').on('click', function (event) {
+	    playerOneName = fullUrl.split(p1).join("").split(p2)[0].replace(rootUrl, '');
+	    playerTwoName = fullUrl.split(p1).join("").split(p2)[1].replace(rootUrl, '');
+	    updatePlayersAndScores();
+	  });
+	};
+
 	var startPlayers = function startPlayers() {
 	  $('#start').on('click', function (event) {
 	    start = "le tron";
 	  });
 	};
 
+	var nextLevel = function nextLevel() {
+	  if (levelUp === true) {
+	    level += 1;
+	    updateLevel();
+	    setTimeout(nextLevel, 10000);
+	  } else if (levelUp === false) {
+	    return;
+	  }
+	};
+
 	var resetGame = function resetGame() {
 	  $('#reset').on('click', function (event) {
+	    level = 0;
 	    game = new Game();
 	    context.clearRect(0, 0, canvas.width, canvas.height);
 	    $('#player_status').children().remove();
+	    start = "le tron";
+	    updatePlayersAndScores();
 	  });
 	};
 
