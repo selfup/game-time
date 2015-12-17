@@ -3,12 +3,20 @@ body {
  background-image: url("../images/tron-bg.jpg");
 }
 
-canvas {
+#game {
  background: url('../images/grid.jpg');
  border-style: solid;
  border-color: teal;
  border-width: large;
  border-radius: 25px;
+}
+
+#instructions {
+  background: url('../images/TronGameInstructions.jpg');
+  border-style: solid;
+  border-color: teal;
+  border-width: large;
+  border-radius: 25px;
 }
 
 .start {
