@@ -91,20 +91,23 @@
 
     // Custom Globals
     "globals"       : {
-                        "require": false,
-                        "match.js": false,
-                        "resetGame": false,
-                        "trueKeys": false,
-                        "falseKeys": false,
-                        "startPlayers": false,
-                        "playGame": false,
-                        "logNames": false,
-                        "_": false,
-                        "updateRealScores": false,
-                        "updatePlayersAndScores": false,
-                        "nextLevel": false,
-                        "removeAndUpdateScores": false,
-                        "updateLevel": false,
-                        "updateIndividualScores": false
+                        "require": true,
+                        "match.js": true,
+                        "resetGame": true,
+                        "trueKeys": true,
+                        "trueKeys": true,
+                        "startPlayers": true,
+                        "playGame": true,
+                        "logNames": true,
+                        "_": true,
+                        "updateRealScores": true,
+                        "updatePlayersAndScores": true,
+                        "nextLevel": true,
+                        "removeAndUpdateScores": true,
+                        "updateLevel": true,
+                        "updateIndividualScores": true,
+                        "falseKeys": true,
+                        "context": true
+
                       }        // additional predefined global variables
 }
