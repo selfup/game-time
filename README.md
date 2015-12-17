@@ -18,3 +18,4 @@ The goal of this application was to build the game of tron using ES6 syntax and 
 [Regis' blog post](https://medium.com/@rboudinot/calling-getters-on-getters-in-es6-classes-a81da6094c07#.mp0u9j425)
 
 
+[Tron](http://i.imgur.com/LZyeXym.png)
