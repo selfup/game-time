@@ -72,7 +72,7 @@
     "devel"         : true,     // Development/debugging (alert, confirm, etc)
     "dojo"          : false,    // Dojo Toolkit
     "jasmine"       : false,    // Jasmine
-    "jquery"        : true,    // jQuery
+    "jquery"        : false,    // jQuery
     "mocha"         : true,     // Mocha
     "mootools"      : false,    // MooTools
     "node"          : true,    // Node.js
@@ -87,7 +87,24 @@
     "wsh"           : false,    // Windows Scripting Host
     "yui"           : false,    // Yahoo User Interface
     "undef"         : false,    //
+    "unused"        : false,    // Prevent jshint from being confused about ES6 constants and lets
 
     // Custom Globals
-    "globals"       : {}        // additional predefined global variables
+    "globals"       : {
+                        "require": false,
+                        "match.js": false,
+                        "resetGame": false,
+                        "trueKeys": false,
+                        "falseKeys": false,
+                        "startPlayers": false,
+                        "playGame": false,
+                        "logNames": false,
+                        "_": false,
+                        "updateRealScores": false,
+                        "updatePlayersAndScores": false,
+                        "nextLevel": false,
+                        "removeAndUpdateScores": false,
+                        "updateLevel": false,
+                        "updateIndividualScores": false
+                      }        // additional predefined global variables
 }
